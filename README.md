@@ -84,7 +84,7 @@ folds   |  This can be either integer to define the number of folds used in `Sta
 restacking   |  True for [restacking](https://github.com/kaz-Anova/StackNet#restacking-mode) else False
 use_proba   |  When evaluating the metric, it will use probabilities instead of class predictions if `use_proba==True`
 use_retraining   |  If `True` it does one model based on the whole training data in order to score the test data. Otherwise it takes the average of all models used in the folds ( however this takes more memory and there is no guarantee that it will work better.) 
-random_state   |  WInteger for randomised procedures
+random_state   |  Integer for randomised procedures
 n_jobs   |   Number of models to run in parallel. This is independent of any extra threads allocated
  n_jobs   |   Number of models to run in parallel. This is independent of any extra threads allocated from the selected algorithms. e.g. it is possible to run 4 models in parallel where one is a randomforest that runs on 10 threads (it selected).
  verbose   |   Integer value higher than zero to allow printing at the console. 
