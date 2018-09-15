@@ -305,7 +305,7 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
                     current_input=np.column_stack((previous_input,current_input)  )
                     
             if self.verbose>0:
-                print ("Input dinesionality: %d at Level %d " % (current_input.shape[1], level)) 
+                print ("Input Dimensionality %d at Level %d " % (current_input.shape[1], level)) 
                 
             this_level_models=self.models[level] 
             
@@ -409,7 +409,7 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold % in level %d ===========" %(i+1,level))
+                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
@@ -537,7 +537,7 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
                     current_input=np.column_stack((previous_input,current_input)  )
                     
             if self.verbose>0:
-                print ("Input dinesionality: %d at Level %d " % (current_input.shape[1], level)) 
+                print ("Input Dimensionality %d at Level %d " % (current_input.shape[1], level)) 
                 
             this_level_models=self.models[level] 
             
@@ -644,7 +644,7 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold % in level %d ===========" %(i+1,level))
+                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
@@ -1069,7 +1069,7 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
                     current_input=np.column_stack((previous_input,current_input)  )
                     
             if self.verbose>0:
-                print ("Input dinesionality: %d at Level %d " % (current_input.shape[1], level)) 
+                print ("Input Dimensionality %d at Level %d " % (current_input.shape[1], level)) 
                 
             this_level_models=self.models[level] 
             
@@ -1157,7 +1157,7 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold % in level %d ===========" %(i+1,level))
+                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
@@ -1275,7 +1275,7 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
                     current_input=np.column_stack((previous_input,current_input)  )
                     
             if self.verbose>0:
-                print ("Input dinesionality: %d at Level %d " % (current_input.shape[1], level)) 
+                print ("Input Dimensionality %d at Level %d " % (current_input.shape[1], level)) 
                 
             this_level_models=self.models[level] 
             
@@ -1363,7 +1363,7 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold % in level %d ===========" %(i+1,level))
+                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
