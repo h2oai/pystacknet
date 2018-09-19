@@ -409,7 +409,8 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
+                if self.verbose>0:
+                    print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
@@ -644,7 +645,8 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
+                if self.verbose>0:
+                    print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
@@ -843,12 +845,13 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
         
         if not isinstance(lev, int):
             raise Exception("lev has to be int") 
-            
+         
+        out_puts=[]    
         lev=min(lev,len(self.estimators_) )
         
         ##start the level training 
         
-        for level in range (len(self.estimators_)):
+        for level in range (lev):
             #start_level_time = time.time()
             
             if self.verbose>0:
@@ -886,20 +889,13 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
             if test_pred.shape[1]!= self._level_dims[level]:
                 raise Exception ("Output dimensionality for level %d with %d is not the same as the one during training with %d " %(level,test_pred.shape[1], self._level_dims[level] ))
             
+            out_puts.append(test_pred)
+            
             previous_input=current_input
             current_input=test_pred       
         
-        if len(test_pred.shape)==2 and test_pred.shape[1]==1 :
-             pr=np.zeros( (test_pred.shape[0],2))
-             pr[:,1]=test_pred[:,0]
-             pr[:,0]=1-test_pred[:,0]
-             test_pred=pr 
-        elif len(test_pred.shape)==1:
-             pr=np.zeros( (test_pred.shape[0],2))
-             pr[:,1]=test_pred
-             pr[:,0]=1-test_pred
-             test_pred=pr             
-        return test_pred
+           
+        return out_puts
                         
             
         
@@ -1010,7 +1006,6 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
     
     
   def fit (self, X, y, sample_weight=None):
-        
         start_time = time.time()
 
 
@@ -1157,7 +1152,8 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
+                if self.verbose>0:
+                    print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
@@ -1363,7 +1359,8 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
                 if self._level_dims[level]!=preds_concat_.shape[1]:
                     raise Exception ("Output dimensionality among folds is not consistent as %d!=%d " % ( self._level_dims[level],preds_concat_.shape[1]))
                 train_oof[test_index] = preds_concat_
-                print ("=========== end of fold %i in level %d ===========" %(i+1,level))
+                if self.verbose>0:
+                    print ("=========== end of fold %i in level %d ===========" %(i+1,level))
                 i+=1
                 
             metrics=np.array(metrics)
@@ -1544,10 +1541,9 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
             raise Exception("lev has to be int") 
             
         lev=min(lev,len(self.estimators_) )
-        
+        out_puts=[]
         ##start the level training 
-        
-        for level in range (len(self.estimators_)):
+        for level in range (lev):
             #start_level_time = time.time()
             
             if self.verbose>0:
@@ -1581,15 +1577,17 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
             
 
             #concatenate predictions  
-            test_pred=np.column_stack( predictions_)  
+            test_pred=np.column_stack( predictions_)
+            print (test_pred.shape)
             if test_pred.shape[1]!= self._level_dims[level]:
                 raise Exception ("Output dimensionality for level %d with %d is not the same as the one during training with %d " %(level,test_pred.shape[1], self._level_dims[level] ))
             
+            out_puts.append(test_pred)
             previous_input=current_input
             current_input=test_pred       
         
             
-        return test_pred
+        return out_puts
                         
             
         

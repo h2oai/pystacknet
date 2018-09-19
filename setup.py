@@ -24,7 +24,7 @@ setup(
     long_description=read_md('README.md'),
 
     install_requires=[
-        'numpy >= 1.15.1',
+        'numpy >= 1.14.0',
         'scipy >= 1.1.0',
         'scikit-learn >= 0.19.1'
     ],
