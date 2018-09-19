@@ -17,7 +17,7 @@ python setup.py install
 
 `pystacknet`'s main object is a 2-dimensional list of sklearn type of models. This list defines the StackNet structure. This is the equivalent of [parameters](https://github.com/kaz-Anova/StackNet#parameters-file) in the Java version. A representative example could be:
 
-```
+```python
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 
@@ -35,7 +35,7 @@ from sklearn.linear_model import LogisticRegression
 
 `pystacknet` is not as strict as in the `Java` version and can allow `Regressors`, `Classifiers` or even `Transformers` at any level of StackNet. In other words the following could work just fine:
 
-```
+```python
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, ExtraTreesClassifier, ExtraTreesRegressor, GradientBoostingClassifier,GradientBoostingRegressor
 from sklearn.linear_model import LogisticRegression, Ridge
 from sklearn.decomposition import PCA
@@ -61,7 +61,7 @@ from sklearn.decomposition import PCA
 
 A typical usage for classification could be : 
 
-```
+```python
 from pystacknet.pystacknet import StackNetClassifier
 
 model=StackNetClassifier(models, metric="auc", folds=4,
