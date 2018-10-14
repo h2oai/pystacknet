@@ -78,13 +78,12 @@ Where :
 
 Command | Explanation
 --- | ---
-models  |  List of models. This should be a 2-dimensional list . The first level hould defice the stacking level and each entry is the model. 
-metric  | Can be "auc","logloss","accuracy","f1","matthews" or your own custom metric as long as it implements (ytrue,ypred,sample_weight=)
+models  |  List of models. This should be a 2-dimensional list. The first level should define the stacking level and each entry is the model. 
+metric  | Can be "auc","logloss","accuracy","f1","matthews" or your own custom metric as long as it implements (ytrue,ypred,sample_weight=).
 folds   |  This can be either integer to define the number of folds used in `StackNet` or an iterable yielding train/test splits.
-restacking   |  True for [restacking](https://github.com/kaz-Anova/StackNet#restacking-mode) else False
-use_proba   |  When evaluating the metric, it will use probabilities instead of class predictions if `use_proba==True`
-use_retraining   |  If `True` it does one model based on the whole training data in order to score the test data. Otherwise it takes the average of all models used in the folds ( however this takes more memory and there is no guarantee that it will work better.) 
-random_state   |  Integer for randomised procedures
-n_jobs   |   Number of models to run in parallel. This is independent of any extra threads allocated
- n_jobs   |   Number of models to run in parallel. This is independent of any extra threads allocated from the selected algorithms. e.g. it is possible to run 4 models in parallel where one is a randomforest that runs on 10 threads (it selected).
- verbose   |   Integer value higher than zero to allow printing at the console. 
+restacking   |  True for [restacking](https://github.com/kaz-Anova/StackNet#restacking-mode) else False.
+use_proba   |  When evaluating the metric, it will use probabilities instead of class predictions if `use_proba==True`.
+use_retraining   |  If `True` it does one model based on the whole training data in order to score the test data. Otherwise it takes the average of all models used in the folds (however this takes more memory and there is no guarantee that it will work better). 
+random_state   |  Integer for randomised procedures.
+n_jobs   |   Number of models to run in parallel. This is independent of any extra threads allocated from the selected algorithms. e.g. it is possible to run 4 models in parallel where one is a randomforest that runs on 10 threads (if selected).
+verbose   |   Integer value higher than zero to allow printing at the console. 
