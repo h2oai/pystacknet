@@ -940,7 +940,7 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
          raise Exception("Models has to be a list of sklearn type of models ")
     for l in range (len(models)):
         if not isinstance(models[l], list):     
-                 raise Exception("Each element in the models' list has to be a list . In other words a 2-dimensional list is expected. ")         
+                 raise Exception("Each element in the 'models' list has to be a list . In other words a 2-dimensional list is expected. ")         
         for m in range (len(models[l])):
             if not hasattr(models[l][m], 'fit') :
                 raise Exception("Each model/algorithm needs to implement a 'fit()' method ")                         
