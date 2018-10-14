@@ -157,10 +157,10 @@ class StackNetClassifier(BaseEstimator, ClassifierMixin):
          raise Exception("Models has to be a list of sklearn type of models ")
     for l in range (len(models)):
         if not isinstance(models[l], list):     
-                 raise Exception("Each element in the models' list has to be a list . In other words a 2-dimensional list is epected. ")         
+                 raise Exception("Each element in the 'models' list has to be a list . In other words a 2-dimensional list is expected. ")         
         for m in range (len(models[l])):
             if not hasattr(models[l][m], 'fit') :
-                raise Exception("Each model/algorithm needs to implement a 'fit() method ")                         
+                raise Exception("Each model/algorithm needs to implement a 'fit()' method ")                         
             
             if not hasattr(models[l][m], 'predict_proba') and not hasattr(models[l][m], 'predict') and not hasattr(models[l][m], 'transform') :
                 raise Exception("Each model/algorithm needs to implement at least one of ('predict()','predict_proba()' or 'transform()' ")                         
@@ -940,10 +940,10 @@ class StackNetRegressor(BaseEstimator, RegressorMixin):
          raise Exception("Models has to be a list of sklearn type of models ")
     for l in range (len(models)):
         if not isinstance(models[l], list):     
-                 raise Exception("Each element in the models' list has to be a list . In other words a 2-dimensional list is epected. ")         
+                 raise Exception("Each element in the 'models' list has to be a list . In other words a 2-dimensional list is expected. ")         
         for m in range (len(models[l])):
             if not hasattr(models[l][m], 'fit') :
-                raise Exception("Each model/algorithm needs to implement a 'fit() method ")                         
+                raise Exception("Each model/algorithm needs to implement a 'fit()' method ")                         
             
             if not hasattr(models[l][m], 'predict_proba') and not hasattr(models[l][m], 'predict') and not hasattr(models[l][m], 'transform') :
                 raise Exception("Each model/algorithm needs to implement at least one of ('predict()','predict_proba()' or 'transform()' ")                         
