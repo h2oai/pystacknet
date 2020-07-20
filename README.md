@@ -88,3 +88,7 @@ random_state   |  Integer for randomised procedures
 n_jobs   |   Number of models to run in parallel. This is independent of any extra threads allocated
  n_jobs   |   Number of models to run in parallel. This is independent of any extra threads allocated from the selected algorithms. e.g. it is possible to run 4 models in parallel where one is a randomforest that runs on 10 threads (it selected).
  verbose   |   Integer value higher than zero to allow printing at the console. 
+ 
+ -------------------------------------------------------------------------------------------------
+ I fix it for sklearn 0.23.0
+ now It works greatly :)
