@@ -90,5 +90,5 @@ n_jobs   |   Number of models to run in parallel. This is independent of any ext
  verbose   |   Integer value higher than zero to allow printing at the console. 
  
  -------------------------------------------------------------------------------------------------
- I fix it for sklearn 0.23.0
+ I fixed it for sklearn 0.23.0
  now It works greatly :)
