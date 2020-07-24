@@ -19,7 +19,7 @@ from pystacknet.metrics import check_regression_metric, check_classification_met
 from sklearn.model_selection import KFold
 from sklearn.utils import check_X_y,check_array,check_consistent_length, column_or_1d
 import inspect
-from sklearn.externals.joblib import delayed,Parallel
+from joblib import delayed,Parallel
 import operator
 import time
 from sklearn.preprocessing import LabelEncoder
@@ -97,7 +97,7 @@ def _parallel_predict_proba_scoring(estimators, X, index):
                 raise Exception (" predictions' shape not equal among estimators within the  batch as %d!=%d " % (predictions.shape[1],preds.shape[1]))
                 
             preds+=predictions
-    preds/=float(len(estimators))
+    preds= np.true_divide(preds,float(len(estimators)))
 
     return preds,index
 
